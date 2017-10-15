@@ -68,7 +68,7 @@
     <article id="post-MySQL安装" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/15/MySQL安装/" class="article-date">
-  <time datetime="2017-10-15T00:56:33.870Z" itemprop="datePublished">2017-10-15</time>
+  <time datetime="2017-10-15T00:59:46.581Z" itemprop="datePublished">2017-10-15</time>
 </a>
     
   </div>
@@ -112,23 +112,23 @@ character-set-server=utf8
 <pre><code class="bash">mysql&gt; grant all privileges on *.* to root@<span class="string">'%'</span>identified by <span class="string">'password'</span>;
 </code></pre>
 <p>如果是新用户而不是root，则要先新建用户</p>
-<pre><code class="bash">mysql&gt;create user <span class="string">'username'</span>@<span class="string">'%'</span> identified by <span class="string">'password'</span>;
+<pre><code class="bash">mysql&gt; create user <span class="string">'username'</span>@<span class="string">'%'</span> identified by <span class="string">'password'</span>;
 </code></pre>
 <p>此时就可以进行远程连接了。</p>
 <p>5、卸载</p>
-<pre><code class="bash">&gt;yum remove  mysql mysql-server mysql-libs mysql-server
+<pre><code class="bash">$ yum remove  mysql mysql-server mysql-libs mysql-server
 </code></pre>
 <p>将找到的相关东西delete掉    </p>
-<pre><code class="bash">find / -name mysql
+<pre><code class="bash">$ find / -name mysql
 </code></pre>
 <p>查询出来的东东yum remove掉</p>
-<pre><code class="bash">rpm -qa|grep mysql
+<pre><code class="bash">$ rpm -qa|grep mysql
 </code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/15/MySQL安装/" data-id="cj8s0ul9t00005is6vxigx8i0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/15/MySQL安装/" data-id="cj8s1n9ox0000vzs65i5ntfnx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,7 +173,7 @@ character-set-server=utf8
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/15/hello-world/" data-id="cj8s0ol5g0000qos6t1tpqko1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/15/hello-world/" data-id="cj8s1n9p50001vzs61l6stj2f" class="article-share-link">Share</a>
       
       
     </footer>
