@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/15/google style /">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/15/googlestyle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Smc">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/15/google style /" itemprop="url">google style</a></h1>
+                <a class="post-title-link" href="/2017/10/15/googlestyle/" itemprop="url">google style</a></h1>
         
 
         <div class="post-meta">
@@ -290,7 +290,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T21:33:14+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T23:36:33+08:00">
                 2017-10-15
               </time>
             
@@ -413,7 +413,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T14:45:37+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T23:33:35+08:00">
                 2017-10-15
               </time>
             
@@ -455,40 +455,273 @@
           
             <h3 id="1、mysql安装"><a href="#1、mysql安装" class="headerlink" title="1、mysql安装"></a>1、mysql安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ yum install mysql</div><div class="line">$ yum install mysql-server</div><div class="line">$ yum install mysql-devel</div></pre></td></tr></table></figure>
 <p>安装mysql和mysql-devel都成功，但是安装mysql-server失败</p>
-<h3 id="2、下载安装mysql-server；"><a href="#2、下载安装mysql-server；" class="headerlink" title="2、下载安装mysql-server；"></a>2、下载安装mysql-server；</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm</div><div class="line">$ rpm -ivh mysql-community-release-el7-5.noarch.rpm</div><div class="line">$ yum install mysql-community-server</div></pre></td></tr></table></figure>
+<h3 id="2、下载安装mysql-server"><a href="#2、下载安装mysql-server" class="headerlink" title="2、下载安装mysql-server"></a>2、下载安装mysql-server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm</div><div class="line">$ rpm -ivh mysql-community-release-el7-5.noarch.rpm</div><div class="line">$ yum install mysql-community-server</div></pre></td></tr></table></figure>
 <p>安装成功后重启mysql服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ service mysqld restart</div></pre></td></tr></table></figure></p>
 <h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><h3 id="启动mysql"><a href="#启动mysql" class="headerlink" title="启动mysql"></a>启动mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ service mysqld start</div></pre></td></tr></table></figure>
 <h3 id="关闭mysql"><a href="#关闭mysql" class="headerlink" title="关闭mysql"></a>关闭mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ service mysqld stop</div></pre></td></tr></table></figure>
 <h3 id="查看运行状态"><a href="#查看运行状态" class="headerlink" title="查看运行状态"></a>查看运行状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ service mysqld status</div></pre></td></tr></table></figure>
-<p>初次安装mysql，root账户没有密码</p>
-<pre><code class="bash">&gt; mysql -u root
-</code></pre>
-<p>设置密码    </p>
-<pre><code class="bash">mysql&gt; <span class="built_in">set</span> password <span class="keyword">for</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> =password(<span class="string">'password'</span>);
-</code></pre>
-<h3 id="3、配置mysql编码UTF-8"><a href="#3、配置mysql编码UTF-8" class="headerlink" title="3、配置mysql编码UTF-8"></a>3、配置mysql编码UTF-8</h3><p>mysql配置文件为/etc/my.cnf 最后加上编码配置</p>
-<pre><code class="bash">[mysql]    
-default-character-set=utf8
-[client]
-default-character-set=utf8
-[mysqld]
-character-set-server=utf8
-</code></pre>
-<h3 id="4、远程连接设置"><a href="#4、远程连接设置" class="headerlink" title="4、远程连接设置"></a>4、远程连接设置</h3><p>把在所有数据库的所有表的所有权限赋值给位于所有IP地址的root用户。    </p>
-<pre><code class="bash">mysql&gt; grant all privileges on *.* to root@<span class="string">'%'</span>identified by <span class="string">'password'</span>;
-</code></pre>
-<p>如果是新用户而不是root，则要先新建用户</p>
-<pre><code class="bash">mysql&gt; create user <span class="string">'username'</span>@<span class="string">'%'</span> identified by <span class="string">'password'</span>;
-</code></pre>
-<p>此时就可以进行远程连接了。</p>
-<h3 id="5、卸载"><a href="#5、卸载" class="headerlink" title="5、卸载"></a>5、卸载</h3><pre><code class="bash">$ yum remove  mysql mysql-server mysql-libs mysql-server
-</code></pre>
-<p>将找到的相关东西delete掉    </p>
-<pre><code class="bash">$ find / -name mysql
-</code></pre>
-<p>查询出来的东东yum remove掉</p>
-<pre><code class="bash">$ rpm -qa|grep mysql
-</code></pre>
+<h5 id="初次安装mysql，root账户没有密码"><a href="#初次安装mysql，root账户没有密码" class="headerlink" title="初次安装mysql，root账户没有密码"></a>初次安装mysql，root账户没有密码</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; mysql -u root</div></pre></td></tr></table></figure>
+<p>#####设置密码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; <span class="built_in">set</span> password <span class="keyword">for</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> =password(<span class="string">'password'</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="3、配置mysql编码"><a href="#3、配置mysql编码" class="headerlink" title="3、配置mysql编码"></a>3、配置mysql编码</h3><h5 id="mysql配置文件为-etc-my-cnf-最后加上编码配置"><a href="#mysql配置文件为-etc-my-cnf-最后加上编码配置" class="headerlink" title="mysql配置文件为/etc/my.cnf 最后加上编码配置"></a>mysql配置文件为/etc/my.cnf 最后加上编码配置</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[mysql]</div><div class="line">default-character-set=utf8</div><div class="line">[client]</div><div class="line">default-character-set=utf8</div><div class="line">[mysqld]</div><div class="line">character-set-server=utf8</div></pre></td></tr></table></figure>
+<h5 id="查看编码设置-不要选择database"><a href="#查看编码设置-不要选择database" class="headerlink" title="查看编码设置(不要选择database)"></a>查看编码设置(不要选择database)</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show variables like <span class="string">'character_set%%'</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">+--------------------------+----------------------------+</div><div class="line">| Variable_name            | Value                      |</div><div class="line">+--------------------------+----------------------------+</div><div class="line">| character_set_client     | utf8                       |</div><div class="line">| character_set_connection | utf8                       |</div><div class="line">| character_set_database   | latin1                     |</div><div class="line">| character_set_filesystem | binary                     |</div><div class="line">| character_set_results    | utf8                       |</div><div class="line">| character_set_server     | latin1                     |</div><div class="line">| character_set_system     | utf8                       |</div><div class="line">| character_sets_dir       | /usr/share/mysql/charsets/ |</div><div class="line">+--------------------------+----------------------------+</div></pre></td></tr></table></figure>
+<h3 id="4、远程连接设置"><a href="#4、远程连接设置" class="headerlink" title="4、远程连接设置"></a>4、远程连接设置</h3><h5 id="把在所有数据库的所有表的所有权限赋值给位于所有IP地址的root用户。"><a href="#把在所有数据库的所有表的所有权限赋值给位于所有IP地址的root用户。" class="headerlink" title="把在所有数据库的所有表的所有权限赋值给位于所有IP地址的root用户。"></a>把在所有数据库的所有表的所有权限赋值给位于所有IP地址的root用户。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; grant all privileges on *.* to root@<span class="string">'%'</span>identified by <span class="string">'password'</span>;</div></pre></td></tr></table></figure>
+<h5 id="如果是新用户而不是root，则要先新建用户"><a href="#如果是新用户而不是root，则要先新建用户" class="headerlink" title="如果是新用户而不是root，则要先新建用户"></a>如果是新用户而不是root，则要先新建用户</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; create user <span class="string">'username'</span>@<span class="string">'%'</span> identified by <span class="string">'password'</span>;</div></pre></td></tr></table></figure>
+<h5 id="此时就可以进行远程连接了。"><a href="#此时就可以进行远程连接了。" class="headerlink" title="此时就可以进行远程连接了。"></a>此时就可以进行远程连接了。</h5><h3 id="5、卸载"><a href="#5、卸载" class="headerlink" title="5、卸载"></a>5、卸载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ yum remove  mysql mysql-server mysql-libs mysql-server</div></pre></td></tr></table></figure>
+<h5 id="将找到的相关东西delete掉"><a href="#将找到的相关东西delete掉" class="headerlink" title="将找到的相关东西delete掉"></a>将找到的相关东西delete掉</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ find / -name mysql</div></pre></td></tr></table></figure>
+<h5 id="查询出来的东东yum-remove掉"><a href="#查询出来的东东yum-remove掉" class="headerlink" title="查询出来的东东yum remove掉"></a>查询出来的东东yum remove掉</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rpm -qa|grep mysql</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/15/CentOS7.3安装Python3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Smc">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="今夜的湖畔有点冷">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/15/CentOS7.3安装Python3/" itemprop="url">CentOS7.3安装Python3.6</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T23:27:49+08:00">
+                2017-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>使用make altinstall，如果使用make install，在系统中将会有两个不同版本的Python在/usr/bin/目录中。这将会导致很多问题，而且不好处理。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wgethttps://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -xzvf Python-3.6.0.tgz</div><div class="line"><span class="built_in">cd</span> Python-3.6.0/</div></pre></td></tr></table></figure>
+<p>把Python3.6安装到 /usr/local 目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ ./configure --prefix=/usr/<span class="built_in">local</span></div><div class="line">$ make</div><div class="line">$ make altinstall</div></pre></td></tr></table></figure></p>
+<p>python3.6程序的执行文件：/usr/local/bin/python3.6<br>python3.6应用程序目录：/usr/local/lib/python3.6<br>pip3的执行文件：/usr/local/bin/pip3.6<br>pyenv3的执行文件：/usr/local/bin/pyenv-3.6</p>
+<p>更改/usr/bin/python链接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /usr/bin</div><div class="line">$ mv python python.backup</div><div class="line">$ ln -s /usr/<span class="built_in">local</span>/bin/python3.6 /usr/bin/python</div><div class="line">$ ln -s /usr/<span class="built_in">local</span>/bin/python3.6 /usr/bin/python3</div></pre></td></tr></table></figure></p>
+<p>更改yum脚本的python依赖<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /usr/bin</div><div class="line">$ ls yum*</div><div class="line">yum yum-config-manager yum-debug-restore yum-groups-manager</div><div class="line">yum-builddep yum-debug-dump yumdownloader</div></pre></td></tr></table></figure></p>
+<p>更改以上文件头为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python 改为 #!/usr/bin/python2</span></div></pre></td></tr></table></figure></p>
+<p>修改gnome-tweak-tool配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ vi /usr/bin/gnome-tweak-tool</div><div class="line"><span class="comment">#!/usr/bin/python 改为 #!/usr/bin/python2</span></div></pre></td></tr></table></figure></p>
+<p>修改urlgrabber配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ vi /usr/libexec/urlgrabber-ext-down</div><div class="line"><span class="comment">#!/usr/bin/python 改为 #!/usr/bin/python2</span></div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/15/Haroopad/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Smc">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="今夜的湖畔有点冷">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/15/Haroopad/" itemprop="url">Haroopad安装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T23:20:28+08:00">
+                2017-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="官网地址："><a href="#官网地址：" class="headerlink" title="官网地址："></a>官网地址：</h3><p><a href="http://pad.haroopress.com/user.html" target="_blank" rel="external">http://pad.haroopress.com/user.html</a><br>选择需要的版本下载放到/opt/haroopad目录</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /opt/haroopad</div><div class="line">$ tar zxvf haroopad-v0.13.1-x64.tar.gz</div><div class="line">$ zxvf data.tar.gz</div><div class="line">$ cp -r ./usr /</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ tar zxf control.tar.gz</div><div class="line">$ chmod 755 postinst</div><div class="line">$ ./postinst</div></pre></td></tr></table></figure>
+<h4 id="Ps-之后我把-opt-haroopad-目录删了"><a href="#Ps-之后我把-opt-haroopad-目录删了" class="headerlink" title="Ps:之后我把 /opt/haroopad 目录删了"></a>Ps:之后我把 /opt/haroopad 目录删了</h4><h3 id="修复图标"><a href="#修复图标" class="headerlink" title="修复图标"></a>修复图标</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vi /usr/share/applications/Haroopad.desktop</div></pre></td></tr></table></figure>
+<p>修改<br>Icon=/usr/share/icons/hicolor/128x128/apps/haroopad.png</p>
 
           
         
@@ -940,7 +1173,7 @@ character-set-server=utf8
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
